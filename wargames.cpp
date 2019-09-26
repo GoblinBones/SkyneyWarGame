@@ -15,14 +15,13 @@ int main()
 	srand(time(0));
 	int enemyLocation = (rand() % 64) + 1;
 
-	int highNumber = 64, lowNumber = 1;
-	int target = 0;
 
+	//human code
 	int humanTargetPrediction = 0;
 	int humanLowNumber = 1, humanHighNumber = 64;
 
 	bool didHumanFindTarget = false;
-
+	//the function for the human to imput and display
 	do
 	{
 		cout << "Find the target in the " << humanHighNumber << " Grid." << endl;
@@ -58,6 +57,7 @@ int main()
 	int linearLowNumber = 1, linearHighNumber = 64;
 
 	bool didLinearFindTarget = false;
+	// linear ai display
 	do
 	{
 		cout << "\nLinear Search is about to make a prediction\n";
@@ -78,6 +78,8 @@ int main()
 
 
 	//Random AI
+	int highNumber = 64, lowNumber = 1;
+	int target = 0;
 	cout << "\nENEMY LOCATION: " << enemyLocation << "\n\n";
 	// function to make the loop work that searches for the taget
 	do
