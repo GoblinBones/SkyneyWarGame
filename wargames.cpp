@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 
-	//to make the number random for the binary to search for
+	//to make the number random for the searches
 	srand(time(0));
 	int enemyLocation = (rand() % 64) + 1;
 
@@ -19,6 +19,7 @@ int main()
 	//human code
 	int humanTargetPrediction = 0;
 	int humanLowNumber = 1, humanHighNumber = 64;
+	int humanTracker = 0;
 
 	bool didHumanFindTarget = false;
 	//the function for the human to imput and display
@@ -32,11 +33,11 @@ int main()
 
 		if (humanTargetPrediction < enemyLocation)
 		{
-			cout << "\nHint:: The target is higher than target predition."
+			cout << "\nHint:: The target is higher than target predition.";
 		}
 		else if (humanTargetPrediction > enemyLocation)
 		{
-			cout << "\nHint:: The target is lower than target predition."
+			cout << "\nHint:: The target is lower than target predition.";
 		}
 
 		if (humanTargetPrediction == enemyLocation)
@@ -49,12 +50,38 @@ int main()
 			cout << "\n Target is not found at this location " << humanTargetPrediction << "Enter new loaction on Grid." << endl;
 			didHumanFindTarget = false;
 		}
+		humanTracker++;
 	} while (didHumanFindTarget == false);
 
+
+	//random ai
+	int randomTargetPredict = 0;
+	int randomLowNumber = 1, randomHighNumber = 64;
+	int randomTracker = 0;
+	
+	bool didRandomFindTarget = false;
+
+	do
+	{
+		cout << "\nRandom search is about to make a prediction\n";
+		randomTargetPredict = (rand() % randomHighNumber) + randomLowNumber;
+		if (randomTargetPredict == enemyLocation)
+		{
+			cout << "\n Search found the Target at " << enemyLocation << endl;
+			didRandomFindTarget = true;
+		}
+		else
+		{
+			cout << "\nThe target was not found at the preddicted loaction " << randomTargetPredict << endl;
+		}
+		randomTracker++;
+
+	} while (didRandomFindTarget == false);
 
 	//linear ai
 	int linearTargetPrediction = 0;
 	int linearLowNumber = 1, linearHighNumber = 64;
+	int linearTracker = 0;
 
 	bool didLinearFindTarget = false;
 	// linear ai display
@@ -66,37 +93,46 @@ int main()
 		if (linearTargetPrediction == enemyLocation)
 		{
 			cout << "\nYou found the target at " << enemyLocation << endl;
-			didlinearFindTarget = true;
+			didLinearFindTarget = true;
 		}
 		else
 		{
-			cout << "\n Target is not found at this location " << linearTargetPrediction << "Enter new loaction on Grid." << endl;
+			cout << "\n Target is not found at this location " << linearTargetPrediction << " Enter new loaction on Grid." << endl;
 			didLinearFindTarget = false;
 		}
-	} while (didLinearFindTarget = false);
+		linearTracker++;
+	} while (didLinearFindTarget == false);
+
+	system("pause");
 
 
 
-	//Random AI
-	int highNumber = 64, lowNumber = 1;
-	int target = 0;
+	//Binary AI
+	int binearyHighNumber = 64, binearyLowNumber = 1;
+	int binearytarget = 0;
+	int binearyTracker = 0;
 	cout << "\nENEMY LOCATION: " << enemyLocation << "\n\n";
 	// function to make the loop work that searches for the taget
 	do
 	{
-		target = ((highNumber - lowNumber) / 2) + lowNumber;
-		cout << "Guess: " << target << "\n";
+		binearytarget = ((binearyHighNumber - binearyLowNumber) / 2) + binearyLowNumber;
+		cout << "Guess: " << binearytarget << "\n";
 
-		if (target < enemyLocation)
+		if (binearytarget < enemyLocation)
 		{
-			lowNumber = target + 1;
+			binearyLowNumber = binearytarget + 1;
 		}
-		if (target > enemyLocation)
+		if (binearytarget > enemyLocation)
 		{
-			highNumber = target - 1;
+			binearyHighNumber = binearytarget - 1;
 		}
-	} while (target != enemyLocation);
+		binearyTracker++;
+	} while (binearytarget != enemyLocation);
 
+	cout << "\nHuman Time: " << humanTracker << endl;
+	cout << "\nRandom Time: " << randomTracker << endl;
+	cout << "\nLinear Time: " << linearTracker << endl;
+	cout << "\nBineary Time: " << binearyTracker << endl;
 
 	return 0;
 
