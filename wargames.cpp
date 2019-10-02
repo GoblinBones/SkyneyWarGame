@@ -53,6 +53,8 @@ int main()
 		humanTracker++;
 	} while (didHumanFindTarget == false);
 
+	system("pause");
+
 
 	//random ai
 	int randomTargetPredict = 0;
@@ -77,6 +79,8 @@ int main()
 		randomTracker++;
 
 	} while (didRandomFindTarget == false);
+
+	system("pause");
 
 	//linear ai
 	int linearTargetPrediction = 0;
@@ -128,6 +132,8 @@ int main()
 		}
 		binearyTracker++;
 	} while (binearytarget != enemyLocation);
+
+	system("pause");
 
 	cout << "\nHuman Time: " << humanTracker << endl;
 	cout << "\nRandom Time: " << randomTracker << endl;
